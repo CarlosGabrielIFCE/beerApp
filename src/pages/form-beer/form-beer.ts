@@ -15,7 +15,8 @@ export class FormBeerPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public http: HttpClient,
-              public toastCtrl: ToastController) {
+              public toastCtrl: ToastController,
+              ) {
   }
 
   saveBeer(beer) {
@@ -26,7 +27,7 @@ export class FormBeerPage {
           duration: 3000,
         })
         toast.present();
-        this.navCtrl.pop();
+        this.navCtrl.push(HomePage);
       }), error => {
         let toast = this.toastCtrl.create({
           message: error,

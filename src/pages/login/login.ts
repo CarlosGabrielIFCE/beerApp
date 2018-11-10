@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
 
@@ -18,7 +18,8 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public authService: AuthProvider) {
+              public authService: AuthProvider,
+              public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
@@ -26,7 +27,11 @@ export class LoginPage {
   }
 
   login() {
-    console.log(this.credential);
+    let toast = this.toastCtrl.create({
+      message: "Bem vindo!",
+      duration: 3000,
+    });
+    toast.present();
     this.authService.login(this.credential);
     this.navCtrl.push(HomePage, {
     });

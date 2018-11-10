@@ -8,6 +8,7 @@ import { Platform } from 'ionic-angular';
 import { BeerInfoPage } from '../beer-info/beer-info';
 import { FormBeerPage } from '../form-beer/form-beer';
 import { AuthProvider } from '../../providers/auth/auth';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-home',
@@ -18,6 +19,7 @@ export class HomePage {
   public cervejas: any;
 
   ionViewDidLoad() {
+
     this.http.get(this.url + "/cervejas")
     .subscribe(data => {
       this.cervejas = data;
@@ -33,12 +35,6 @@ export class HomePage {
               public authService: AuthProvider,
               public platform: Platform,
               public navParams: NavParams) {
-
-      let toast = this.toastCtrl.create({
-        message: "Bem vindo!",
-        duration: 3000,
-      });
-      toast.present();
 
       this.http.get(this.url + "/cervejas")
                 .subscribe(data => {
@@ -88,6 +84,10 @@ export class HomePage {
       ]
     });
     opcao.present();
+  }
+
+  backToLogin() {
+    this.navCtrl.push(LoginPage);
   }
 
 }

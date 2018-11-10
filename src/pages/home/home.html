@@ -1,16 +1,25 @@
 <ion-header>
-  <ion-navbar color="danger">
+  <ion-navbar hideBackButton color="danger">
     <ion-title>
       Beer App
     </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="backToLogin()">
+        Sair
+      </button>
+    </ion-buttons>
   </ion-navbar>
+
 </ion-header>
 
-<ion-content padding >
-  <button ion-button color="danger" (click)="createBeer()">Cadastrar Cerveja</button>
+<ion-content padding class="card-background-page">
   <ion-list>
-    <button ion-item *ngFor="let cerveja of cervejas"  (press)="beerPressed(cerveja.id)" (click)="getBeerInfo(cerveja.id)">
-      {{ cerveja.name }}
-    </button>  
+    <ion-card *ngFor="let cerveja of cervejas" (press)="beerPressed(cerveja.id)" (click)="getBeerInfo(cerveja.id)">
+      <img src="https://abrilexame.files.wordpress.com/2016/09/size_960_16_9_cerveja50.jpg"/>
+      <div class="card-title">{{cerveja.name}}</div>
+    </ion-card> 
   </ion-list>
+  <ion-fab right bottom>
+    <button ion-fab color="danger" (click)="createBeer()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
 </ion-content>
