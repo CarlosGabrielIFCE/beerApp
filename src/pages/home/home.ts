@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ActionSheetController, ToastController } from 'ionic-angular';
+import { NavController, ActionSheetController, ToastController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { Platform } from 'ionic-angular';
@@ -25,12 +25,20 @@ export class HomePage {
     })
   }
 
+
   constructor(public navCtrl: NavController,
               public http: HttpClient,
               public actionSheetCtrl: ActionSheetController,
               public toastCtrl: ToastController,
               public authService: AuthProvider,
-              public platform: Platform) {
+              public platform: Platform,
+              public navParams: NavParams) {
+
+      let toast = this.toastCtrl.create({
+        message: "Bem vindo!",
+        duration: 3000,
+      });
+      toast.present();
 
       this.http.get(this.url + "/cervejas")
                 .subscribe(data => {

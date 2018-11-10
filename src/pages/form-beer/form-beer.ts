@@ -26,7 +26,7 @@ export class FormBeerPage {
           duration: 3000,
         })
         toast.present();
-        this.navCtrl.push(HomePage);
+        this.navCtrl.pop();
       }), error => {
         let toast = this.toastCtrl.create({
           message: error,

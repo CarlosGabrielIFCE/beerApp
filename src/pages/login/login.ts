@@ -28,7 +28,8 @@ export class LoginPage {
   login() {
     console.log(this.credential);
     this.authService.login(this.credential);
-    this.navCtrl.push(HomePage);
+    this.navCtrl.push(HomePage, {
+    });
   }
 
 }
