@@ -1,14 +1,16 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="danger">
     <ion-title>
-      Ionic Blank
+      Beer App
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding >
+  <button ion-button color="danger" (click)="createBeer()">Cadastrar Cerveja</button>
+  <ion-list>
+    <button ion-item *ngFor="let cerveja of cervejas"  (press)="beerPressed(cerveja.id)" (click)="getBeerInfo(cerveja.id)">
+      {{ cerveja.name }}
+    </button>  
+  </ion-list>
 </ion-content>
