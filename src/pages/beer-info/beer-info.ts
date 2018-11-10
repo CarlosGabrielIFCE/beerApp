@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 
@@ -13,7 +13,8 @@ export class BeerInfoPage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              public http: HttpClient) {
+              public http: HttpClient,
+              public toastCtrl: ToastController) {
     let beer_id = this.navParams.get('beer_id');
     let api_url = this.navParams.get('api_url');
 

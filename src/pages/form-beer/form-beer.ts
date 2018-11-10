@@ -9,7 +9,7 @@ import { HomePage } from '../home/home';
   templateUrl: 'form-beer.html',
 })
 export class FormBeerPage {
-  beer = {name: "", type: "", description: ""};
+  beer = {name: "", type: "", description: "", price: ""};
   private url: string = "https://beerappi.herokuapp.com/";
 
   constructor(public navCtrl: NavController, 
