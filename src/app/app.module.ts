@@ -16,6 +16,7 @@ import { HomePage } from '../pages/home/home';
 import { BeerInfoPage } from '../pages/beer-info/beer-info';
 import { FormBeerPage } from '../pages/form-beer/form-beer';
 import { LoginPage } from '../pages/login/login';
+import { ContaBeerPage } from '../pages/conta-beer/conta-beer';
 
 
 
@@ -25,7 +26,8 @@ import { LoginPage } from '../pages/login/login';
     HomePage,
     BeerInfoPage,
     FormBeerPage,
-    LoginPage
+    LoginPage,
+    ContaBeerPage
   ],
   imports: [
     IonicStorageModule.forRoot(),
@@ -39,7 +41,8 @@ import { LoginPage } from '../pages/login/login';
     HomePage,
     BeerInfoPage,
     FormBeerPage,
-    LoginPage
+    LoginPage,
+    ContaBeerPage
   ],
   providers: [
     StatusBar,

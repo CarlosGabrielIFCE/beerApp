@@ -14,6 +14,7 @@
 
 <ion-content padding class="card-background-page">
   <ion-list>
+    <button ion-button full color="danger" (click)="showConta()">Calcular renda do dia</button>
     <ion-card *ngFor="let cerveja of cervejas" (press)="beerPressed(cerveja.id)" (click)="getBeerInfo(cerveja.id)">
       <img src="https://abrilexame.files.wordpress.com/2016/09/size_960_16_9_cerveja50.jpg"/>
       <div class="card-title">{{cerveja.name}}</div>

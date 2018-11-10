@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ActionSheetController, ToastController, NavParams } from 'ionic-angular';
+import { NavController, ActionSheetController, ToastController, NavParams, ModalController } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { Platform } from 'ionic-angular';
@@ -9,6 +9,7 @@ import { BeerInfoPage } from '../beer-info/beer-info';
 import { FormBeerPage } from '../form-beer/form-beer';
 import { AuthProvider } from '../../providers/auth/auth';
 import { LoginPage } from '../login/login';
+import { ContaBeerPage } from '../conta-beer/conta-beer';
 
 @Component({
   selector: 'page-home',
@@ -17,6 +18,7 @@ import { LoginPage } from '../login/login';
 export class HomePage {
   private url: string = 'https://beerappi.herokuapp.com';
   public cervejas: any;
+  public valor: number = 0;
 
   ionViewDidLoad() {
 
@@ -34,13 +36,18 @@ export class HomePage {
               public toastCtrl: ToastController,
               public authService: AuthProvider,
               public platform: Platform,
-              public navParams: NavParams) {
+              public navParams: NavParams,
+              public modalCtrl: ModalController) {
 
       this.http.get(this.url + "/cervejas")
                 .subscribe(data => {
                   this.cervejas = data;
-                  
-                }) 
+                  for(let i = 0;i < this.cervejas.length;i++) {
+                    console.log(this.cervejas[i].price);
+                    this.valor += parseFloat(this.cervejas[i].price);
+                  } 
+                  console.log(this.valor);
+                })
 
   }
 
@@ -49,6 +56,13 @@ export class HomePage {
       'beer_id': id,
       'api_url': this.url
     });
+  }
+
+  showConta() {
+    let contaModal = this.modalCtrl.create(ContaBeerPage, {
+      valor: this.valor,
+    })
+    contaModal.present();
   }
 
   createBeer() {
